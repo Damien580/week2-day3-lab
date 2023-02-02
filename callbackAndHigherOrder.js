@@ -168,7 +168,7 @@ function each(arr, func){
 
 // CODE HERE
 each(names, (item, index) => {
-  console.log(`The item at index ${i} is ${names[i]}`)
+  console.log(`The item at index ${index} is ${item}`)
 })
 
 
@@ -196,7 +196,12 @@ each(names, (item, index) => {
 */
 
 // CODE HERE
+function addingFactory(number1) {
+  return function(number2) {
+    return number1 + number2
 
+  }
+}
 /*
   Now that you have addingFactory, you can create other
   functions from it. 
@@ -210,7 +215,7 @@ each(names, (item, index) => {
 */
 
 // CODE HERE
-
+let add10 = addingFactory(10)
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -222,7 +227,7 @@ each(names, (item, index) => {
 */
 
 // CODE HERE
-
+console.log(add10(15))
 /*
   Let's make another function from the addingFactory. 
 
@@ -235,7 +240,8 @@ each(names, (item, index) => {
 */
 
 // CODE HERE
-
+let addThirteen = addingFactory(13)
+console.log(addThirteen(69))
 
 
 
@@ -271,13 +277,18 @@ var users = [
 // Do not edit the code above.
 
 // CODE HERE 
-
+function getUserById(arr, id, func) {
+  for (i = 0; i < users.length; i++){
+   if (users[i].id === id)
+    func(users[i])
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+getUserById(users, '16t', user => {
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+})
